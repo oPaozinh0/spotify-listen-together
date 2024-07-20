@@ -78,7 +78,9 @@ export default class Patcher {
 
   private subscribeToPlayerEvents() {
     Spicetify.Player.addEventListener("songchange", (event) => {
-      this.trackChangeHandler(event.data)
+      if (event) {
+        this.trackChangeHandler(event.data);
+      }
     });
   }
 

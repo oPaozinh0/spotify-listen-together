@@ -14,7 +14,7 @@ class Settings {
   constructor({
     settingsVersion = '1',
     server = '',
-    name = 'Anonymous',
+    name = 'Insira o seu nome aqui',
     login = '',
     password = '',
     autoConnect = false,
@@ -47,7 +47,7 @@ export default class SettingsManager {
           this.settings = defaults;
         }
       } catch (error) {
-        console.error('Failed to parse stored settings:', error);
+        console.error('Erro ao recuperar os dados:', error);
         this.settings = defaults;
       }
     } else {

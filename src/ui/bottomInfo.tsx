@@ -17,18 +17,18 @@ export default function BottomInfo(props: {server: string, listeners?: [{name: s
   return <div style={styles.textContainer}>
     {
       !!props.server ? <>
-        <span style={{maxHeight: '22px', overflow: 'hidden', maxWidth: '50%'}}>{`Listen Together ${props.loading ? "trying to connect" : "connected"} to ${props.server}`}</span>
+        <span style={{maxHeight: '22px', overflow: 'hidden', maxWidth: '50%'}}>{`${props.loading ? "Tentando conectar" : "Escutando juntos"} em ${props.server}`}</span>
 
-        {props.loading ? <></> : <span style={{maxHeight: '22px', overflow: 'hidden', maxWidth: '50%'}}>{`Listeners: `} {
+        {props.loading ? <></> : <span style={{maxHeight: '22px', overflow: 'hidden', maxWidth: '50%'}}>{`Participantes: `} {
           props.listeners ? props.listeners.map((listener, i) => {
             let color = ""
-            let title = "Listener"
+            let title = "Participante"
             if (listener.isHost && listener.watchingAD) {
               color = "LimeGreen"; 
-              title = "Host and watching an AD"
+              title = "Host e assistindo um AD";
             } else if (listener.watchingAD) {
               color = "LimeGreen";
-              title = "Watching an AD";
+              title = "Assistindo um AD";
             } else if (listener.isHost) {
               color = "Orange";
               title = "Host";

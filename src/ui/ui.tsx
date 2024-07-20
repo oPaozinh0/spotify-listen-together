@@ -55,17 +55,17 @@ export default class UI {
         <Popup.Button
           text={
             this.ltPlayer.client.connected || this.ltPlayer.client.connecting
-              ? 'Leave the server'
-              : 'Join a server'
+              ? 'Sair do servidor'
+              : 'Entrar em um servidor'
           }
           onClick={() => this.onClickJoinAServer()}
         />,
         <Popup.Button
-          text={this.ltPlayer.isHost ? 'Stop hosting' : 'Request host'}
+          text={this.ltPlayer.isHost ? 'Parar de ser host' : 'Requisitar host'}
           onClick={() => this.onClickRequestHost()}
           disabled={!this.ltPlayer.client.connected}
         />,
-        <Popup.Button text={'About'} onClick={() => this.onClickAbout()} />,
+        <Popup.Button text={'Sobre'} onClick={() => this.onClickAbout()} />,
       ],
     );
   }
@@ -93,7 +93,7 @@ export default class UI {
         Popup.close();
       },
       ['Reconnect'],
-      [<Popup.Text text={'Disconnected from the server.'} />],
+      [<Popup.Text text={'Desconectado do servidor.'} />],
     );
   }
 
@@ -118,7 +118,7 @@ export default class UI {
       this.ltPlayer.client.disconnect();
     } else {
       this.joinServerPopup((btn, address, name, autoConnect) => {
-        if (btn === 'Host a server') {
+        if (btn === 'Crie seu servidor') {
           window.location.href =
             'https://heroku.com/deploy?template=https://github.com/FlafyDev/spotify-listen-together-server';
         } else {
@@ -151,7 +151,7 @@ export default class UI {
         });
       }
     } else {
-      this.windowMessage('Please connect to a server before requesting host.');
+      this.windowMessage('Por favor, se conecte primeiro para requisitar host.');
     }
   }
 
@@ -164,14 +164,14 @@ export default class UI {
       [],
       [
         <Popup.Text
-          text={`Listen Together v${pJson.version} created by FlafyDev`}
+          text={`Listen Together v${pJson.version} criado por oPaozinh0`}
           centered={false}
         />,
         <Popup.Button
           text={'Github'}
           onClick={() =>
             (window.location.href =
-              'https://github.com/FlafyDev/spotify-listen-together')
+              'https://github.com/oPaozinh0/spotify-listen-together')
           }
         />,
       ],
@@ -195,7 +195,7 @@ export default class UI {
       ['Join', 'Host a server'],
       [
         <Popup.Textbox
-          name="Server address"
+          name="Endereço do servidor"
           example="https://www.server.com/"
           defaultValue={this.ltPlayer.settingsManager.settings.server}
           onInput={(text) => {
@@ -203,7 +203,7 @@ export default class UI {
           }}
         />,
         <Popup.Textbox
-          name="Your name"
+          name="Seu nome"
           example="Joe"
           defaultValue={this.ltPlayer.settingsManager.settings.name}
           onInput={(text) => {
@@ -211,7 +211,7 @@ export default class UI {
           }}
         />,
         <Popup.Checkbox
-          label="Autoconnect"
+          label="Auto-conexão"
           defaultChecked={this.ltPlayer.settingsManager.settings.autoConnect}
           onChange={(checked) => {
             autoConnect = checked;
@@ -228,9 +228,9 @@ export default class UI {
       () => callback(password),
       ['Request'],
       [
-        <Popup.Text text="Request host" />,
+        <Popup.Text text="Requisição para ser Host" />,
         <Popup.Textbox
-          name="Password"
+          name="Senha"
           defaultValue={this.ltPlayer.settingsManager.settings.password}
           onInput={(text) => (password = text)}
         />,
